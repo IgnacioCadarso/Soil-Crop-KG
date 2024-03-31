@@ -1,0 +1,18 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://w3id.org/soilkg/ontology/>
+    a owl:Ontology ;
+    dcterms:title "Soil Knowledge Graph Ontology" ;
+    dcterms:creator "Ignacio Cadarso Quevedo" ;
+    dcterms:created "2023-01-01"^^xsd:date ;
+    dcterms:modified "2023-04-01"^^xsd:date ;
+    dcterms:versionNumber "1.0" ;
+    dcterms:description "An ontology for representing soil properties, crop data, land use, and land cover, including specific measures and classifications relevant to agricultural and environmental sciences. It integrates NUTS region classifications and provides a rich framework for the annotation and retrieval of soil and crop measurement data across Europe." ;
+    dcterms:subject "Soil properties, Land Use, Land Cover, Crops" ;
+    dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
+    vann:preferredNamespaceUri "https://w3id.org/soilkg/ontology/" ;
+    vann:preferredNamespacePrefix "slo" ;
+    voaf:vocabularyUsed <http://www.w3.org/2002/07/owl#>, <http://www.w3.org/2000/01/rdf-schema#>, <http://www.w3.org/2001/XMLSchema#>, <http://rdfdata.eionet.europa.eu/ramon/ontology/>, <http://semanticscience.org/resource/> .

@@ -1,0 +1,91 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix slo: <https://w3id.org/soilkg/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema1: <http://schema.org/> .
+@prefix ramon: <http://rdfdata.eionet.europa.eu/ramon/ontology/> .
+
+slo:SurveyPointShape a sh:NodeShape ;
+    sh:targetClass slo:SurveyPoint ;
+    sh:property [
+        sh:path slo:hasElevation ;
+        sh:datatype xsd:float ;
+        sh:name "Elevation" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path slo:hasLC ;
+        sh:class slo:LandCover ;
+        sh:name "Land Cover" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path slo:hasLU ;
+        sh:class slo:LandUse ;
+        sh:name "Land Use" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path slo:hasProperty ;
+        sh:class slo:SoilProperty ;
+        sh:name "Soil Property" ;
+        sh:minCount 1 ;
+        sh:maxCount 16 ;
+    ] ;
+    sh:property [
+        sh:path slo:surveyDate ;
+        sh:datatype xsd:date ;
+        sh:name "Survey Date" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path slo:surveyLocation ;
+        sh:class ramon:NUTSRegion ;
+        sh:name "Survey Location" ;
+        sh:minCount 2 ;
+        sh:maxCount 2 ;
+    ] .
+
+
+slo:CropMeasurementShape a sh:NodeShape ;
+    sh:targetClass slo:CropMeasurement ;
+    sh:property [
+        sh:path schema1:value ;
+        sh:datatype xsd:float ;
+        sh:name "Value" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path slo:CropMeasurementDate ;
+        sh:datatype xsd:date ;
+        sh:name "Measurement Date" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path slo:CropMeasurementLocation ;
+        sh:class ramon:NUTS2 ;
+        sh:name "Measurement Location" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+
+    ] ;
+    sh:property [
+        sh:path slo:cropMeasured ;
+        sh:class slo:Crop ;
+        sh:name "Crop Measured" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path slo:hasVariable ;
+        sh:class slo:cropVariable ;
+        sh:name "Variable" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
+

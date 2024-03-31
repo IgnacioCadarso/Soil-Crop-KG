@@ -1,0 +1,569 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ramon: <http://rdfdata.eionet.europa.eu/ramon/ontology/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix slo: <https://w3id.org/soilkg/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+
+# CLASSES
+
+slo:SurveyPoint a owl:Class .
+
+slo:SoilProperty a owl:Class .
+
+slo:Crop a owl:Class .
+
+slo:CropMeasurement a owl:Class .
+
+slo:cropVariable a owl:Class .
+
+slo:LandUse a owl:Class ;
+    rdfs:label "Land Use"^^xsd:string .
+
+slo:LandCover a owl:Class ;
+    rdfs:label "Land Cover"^^xsd:string .
+
+slo:Area a owl:Class ;
+    rdfs:subClassOf slo:cropVariable;
+    rdfs:label "Area"^^xsd:string .
+
+slo:Yield a owl:Class ;
+    rdfs:subClassOf slo:cropVariable;
+    rdfs:label "Yield"^^xsd:string .
+
+slo:Production a owl:Class ;
+    rdfs:subClassOf slo:cropVariable;
+    rdfs:label "Production"^^xsd:string .
+
+# nut regions 
+slo:NUTS0 a ramon:NUTSRegion,
+        owl:Class ;
+    ramon:level 0 .
+
+slo:NUTS1 a ramon:NUTSRegion,
+        owl:Class ;
+    rdfs:label "major socio-economic regions"^^xsd:string ;
+    ramon:level 1 .
+
+slo:NUTS2 a ramon:NUTSRegion,
+        owl:Class ;
+    rdfs:label "basic regions for the application of regional policies"^^xsd:string ;
+    ramon:level 2 .
+
+slo:NUTS3 a ramon:NUTSRegion,
+        owl:Class ;
+    rdfs:label "small regions for specific diagnoses"^^xsd:string ;
+    ramon:level 3 .
+
+
+# soil properties 
+
+slo:Coarse a owl:Class ;
+    rdfs:label "Coarse elements"^^xsd:string ;
+    rdfs:subClassOf slo:SoilProperty ;
+    slo:unit "%" .
+
+slo:Clay a owl:Class ;
+    rdfs:label "Clay content"^^xsd:string ;
+    rdfs:subClassOf slo:SoilProperty ;
+    slo:unit "%" .
+
+slo:Silt a owl:Class ;
+    rdfs:label "Silt content"^^xsd:string ;
+    rdfs:subClassOf slo:SoilProperty ;
+    slo:unit "%" .
+
+slo:Sand a owl:Class ;
+    rdfs:label "Sand content"^^xsd:string ;
+    rdfs:subClassOf slo:SoilProperty ;
+    slo:unit "%" .
+
+slo:CaCO3 a owl:Class ;
+    rdfs:label "Carbonates content"^^xsd:string ;
+    rdfs:subClassOf slo:SoilProperty ;
+    slo:unit "g/kg" .
+
+slo:CaCO3C20_30 a owl:Class ;
+    rdfs:label "Carbonates content (20-30 cm)"^^xsd:string ;
+    rdfs:subClassOf slo:SoilProperty ;
+    slo:unit "g/kg" .
+
+slo:EC a owl:Class ;
+    rdfs:label "Electrical conductivity"^^xsd:string ;
+    rdfs:subClassOf slo:SoilProperty ;
+    slo:unit "mS/m" .
+
+slo:K a owl:Class ;
+    rdfs:label "Extractable potassium content"^^xsd:string ;
+    rdfs:subClassOf slo:SoilProperty ;
+    slo:unit "mg/kg" ;
+    owl:sameAs sio:SIO_011018.
+
+slo:N a owl:Class ;
+    rdfs:label "Total nitrogen content"^^xsd:string ;
+    rdfs:subClassOf slo:SoilProperty ;
+    slo:unit "g/kg" ;
+    owl:sameAs sio:SIO_011006.
+
+slo:OC a owl:Class ;
+    rdfs:label "Organic carbon content"^^xsd:string ;
+    rdfs:subClassOf slo:SoilProperty ;
+    slo:unit "g/kg" ;
+    owl:sameAs sio:SIO_010786. 
+
+slo:OCC20_30 a owl:Class ;
+    rdfs:label "Organic carbon content (20-30 cm)"^^xsd:string ;
+    rdfs:subClassOf slo:SoilProperty ;
+    slo:unit "g/kg" .
+
+slo:Ox_Al a owl:Class ;
+    rdfs:label "Al Oxylate content"^^xsd:string ;
+    rdfs:subClassOf slo:SoilProperty ;
+    slo:unit "mg/kg" .
+
+slo:Ox_Fe a owl:Class ;
+    rdfs:label "Fe Oxylate content"^^xsd:string ;
+    rdfs:subClassOf slo:SoilProperty ;
+    slo:unit "mg/kg" .
+
+slo:P a owl:Class ;
+    rdfs:label "Phosphorus content"^^xsd:string ;
+    rdfs:subClassOf slo:SoilProperty ;
+    slo:unit "mg/kg" ;
+    owl:sameAs sio:SIO_011014.
+
+slo:PHCaCl2 a owl:Class ;
+    rdfs:label "pH in CaCl2 solution"^^xsd:string ;
+    rdfs:subClassOf slo:SoilProperty ;
+    rdfs:subClassOf sio:SIO_001089.
+
+slo:PHH2O a owl:Class ;
+    rdfs:label "pH in H2O"^^xsd:string ;
+    rdfs:subClassOf slo:SoilProperty ;
+    rdfs:subClassOf sio:SIO_001089.
+
+# crops
+
+slo:Durum_wheat a slo:Crop ;
+    rdfs:label "Durum_wheat" .
+
+slo:Grain_maize a slo:Crop ;
+    rdfs:label "Grain_maize" .
+
+slo:Soft_wheat a slo:Crop ;
+    rdfs:label "Soft_wheat" .
+
+slo:Spring_barley a slo:Crop ;
+    rdfs:label "Spring_barley" .
+
+slo:Sugar_beet a slo:Crop ;
+    rdfs:label "Sugar_beet" .
+
+slo:Sunflower a slo:Crop ;
+    rdfs:label "Sunflower" .
+
+slo:Total_barley a slo:Crop ;
+    rdfs:label "Total_barley" .
+
+slo:Total_wheat a slo:Crop ;
+    rdfs:label "Total_wheat" .
+
+slo:Winter_barley a slo:Crop ;
+    rdfs:label "Winter_barley" .
+
+# PROPERTIES 
+slo:hasElevation a owl:DatatypeProperty ;
+    rdfs:domain slo:SurveyPoint ;
+    rdfs:range xsd:float .
+
+slo:hasLC a owl:ObjectProperty ;
+    rdfs:domain slo:SurveyPoint ;
+    rdfs:range slo:LandCover .
+
+slo:hasLC0_desc a owl:DatatypeProperty ;
+    rdfs:domain slo:LandCover ;
+    rdfs:range xsd:string .
+
+slo:hasLC1_desc a owl:DatatypeProperty ;
+    rdfs:domain slo:LandCover ;
+    rdfs:range xsd:string .
+
+slo:hasLU a owl:ObjectProperty ;
+    rdfs:domain slo:SurveyPoint ;
+    rdfs:range slo:LandUse .
+
+slo:hasLU1_desc a owl:DatatypeProperty ;
+    rdfs:domain slo:LandUse ;
+    rdfs:range xsd:string .
+
+slo:hasProperty a owl:ObjectProperty ;
+    rdfs:domain slo:SurveyPoint ;
+    rdfs:range slo:SoilProperty .
+
+slo:surveyDate a owl:DatatypeProperty ;
+    rdfs:domain slo:SurveyPoint ;
+    rdfs:range xsd:date .
+
+slo:surveyLocation a owl:ObjectProperty ;
+    rdfs:domain slo:SurveyPoint ;
+    rdfs:range ramon:NUTSRegion .
+
+slo:CropMeasurementLocation a owl:ObjectProperty ;
+    rdfs:domain slo:CropMeasurement ;
+    rdfs:range ramon:NUTS2 .
+
+slo:hasVariable a owl:ObjectProperty ;
+    rdfs:domain slo:CropMeasurement ;
+    rdfs:range slo:cropVariable .
+
+slo:cropMeasured a owl:ObjectProperty ;
+    rdfs:domain slo:CropMeasurement ;
+    rdfs:range slo:Crop .
+
+slo:unit a owl:DatatypeProperty ;
+    rdfs:domain slo:soilProperty ;
+    rdfs:range xsd:string .
+
+slo:CropMeasurementDate a owl:DatatypeProperty ;
+    rdfs:domain slo:CropMeasurement ;
+    rdfs:range xsd:date .
+
+# LAND COVER AND USE CLASSES
+slo:LC_A21 a slo:LandCover ;
+    slo:hasLC0_desc "Artificial land" ;
+    slo:hasLC1_Desc "Non built-up area features" .
+
+slo:LC_A22 a slo:LandCover ;
+    slo:hasLC0_desc "Artificial land" ;
+    slo:hasLC1_Desc "Non built-up linear features" .
+
+slo:LC_A30 a slo:LandCover ;
+    slo:hasLC0_desc "Artificial land" ;
+    slo:hasLC1_Desc "Other artificial areas" .
+
+slo:LC_B11 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Common wheat" .
+
+slo:LC_B12 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Durum wheat" .
+
+slo:LC_B13 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Barley" .
+
+slo:LC_B14 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Rye" .
+
+slo:LC_B15 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Oats" .
+
+slo:LC_B16 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Maize" .
+
+slo:LC_B17 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Rice" .
+
+slo:LC_B18 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Triticale" .
+
+slo:LC_B19 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Other cereals" .
+
+slo:LC_B21 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Potatoes" .
+
+slo:LC_B22 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Sugar beet" .
+
+slo:LC_B23 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Other root crops" .
+
+slo:LC_B31 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Sunflower" .
+
+slo:LC_B32 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Rape and turnip rape" .
+
+slo:LC_B33 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Soya" .
+
+slo:LC_B34 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Cotton" .
+
+slo:LC_B35 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Other fibre and oleaginous crops" .
+
+slo:LC_B36 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Tobacco" .
+
+slo:LC_B37 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Other non-permanent industrial crops" .
+
+slo:LC_B41 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Dry pulses" .
+
+slo:LC_B42 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Tomatoes" .
+
+slo:LC_B43 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Other fresh vegetables" .
+
+slo:LC_B44 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Floriculture and ornamental plants" .
+
+slo:LC_B45 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Strawberries" .
+
+slo:LC_B51 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Clovers" .
+
+slo:LC_B52 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Lucerne" .
+
+slo:LC_B53 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Other Leguminous  and mixtures for fodder" .
+
+slo:LC_B54 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Mix of cereals" .
+
+slo:LC_B55 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Temporary grassland" .
+
+slo:LC_B71 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Apple fruit" .
+
+slo:LC_B72 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Pear fruit" .
+
+slo:LC_B73 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Cherry fruit" .
+
+slo:LC_B74 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Nuts trees" .
+
+slo:LC_B75 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Other fruit trees and berries" .
+
+slo:LC_B76 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Oranges" .
+
+slo:LC_B77 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Other citrus fruit" .
+
+slo:LC_B81 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Olive groves" .
+
+slo:LC_B82 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Vineyards" .
+
+slo:LC_B83 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Nurseries" .
+
+slo:LC_B84 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Permanent industrial crops" .
+
+slo:LC_Bx1 a slo:LandCover ;
+    slo:hasLC0_desc "Cropland" ;
+    slo:hasLC1_Desc "Arable land (only PI)" .
+
+slo:LC_C10 a slo:LandCover ;
+    slo:hasLC0_desc "Woodland" ;
+    slo:hasLC1_Desc "Broadleaved woodland" .
+
+slo:LC_C21 a slo:LandCover ;
+    slo:hasLC0_desc "Woodland" ;
+    slo:hasLC1_Desc "Spruce dominated coniferous woodland" .
+
+slo:LC_C22 a slo:LandCover ;
+    slo:hasLC0_desc "Woodland" ;
+    slo:hasLC1_Desc "Pine dominated coniferous woodland" .
+
+slo:LC_C23 a slo:LandCover ;
+    slo:hasLC0_desc "Woodland" ;
+    slo:hasLC1_Desc "Other coniferous woodland" .
+
+slo:LC_C31 a slo:LandCover ;
+    slo:hasLC0_desc "Woodland" ;
+    slo:hasLC1_Desc "Spruce dominated mixed woodland" .
+
+slo:LC_C32 a slo:LandCover ;
+    slo:hasLC0_desc "Woodland" ;
+    slo:hasLC1_Desc "Pine dominated mixed woodland" .
+
+slo:LC_C33 a slo:LandCover ;
+    slo:hasLC0_desc "Woodland" ;
+    slo:hasLC1_Desc "Other mixed woodland" .
+
+slo:LC_D10 a slo:LandCover ;
+    slo:hasLC0_desc "Shrubland" ;
+    slo:hasLC1_Desc "Shrubland with sparse tree cover" .
+
+slo:LC_D20 a slo:LandCover ;
+    slo:hasLC0_desc "Shrubland" ;
+    slo:hasLC1_Desc "Shrubland without tree cover" .
+
+slo:LC_E10 a slo:LandCover ;
+    slo:hasLC0_desc "Grassland" ;
+    slo:hasLC1_Desc "Grassland with sparse tree/shrub cover" .
+
+slo:LC_E20 a slo:LandCover ;
+    slo:hasLC0_desc "Grassland" ;
+    slo:hasLC1_Desc "Grassland without tree/shrub cover" .
+
+slo:LC_E30 a slo:LandCover ;
+    slo:hasLC0_desc "Grassland" ;
+    slo:hasLC1_Desc "Spontaneously re-vegetated surfaces" .
+
+slo:LC_F10 a slo:LandCover ;
+    slo:hasLC0_desc "Bareland" ;
+    slo:hasLC1_Desc "Rocks and stones" .
+
+slo:LC_F20 a slo:LandCover ;
+    slo:hasLC0_desc "Bareland" ;
+    slo:hasLC1_Desc "Sand" .
+
+slo:LC_F30 a slo:LandCover ;
+    slo:hasLC0_desc "Bareland" ;
+    slo:hasLC1_Desc "Lichens and Moss" .
+
+slo:LC_F40 a slo:LandCover ;
+    slo:hasLC0_desc "Bareland" ;
+    slo:hasLC1_Desc "Other bare soil" .
+
+slo:LC_G12 a slo:LandCover ;
+    slo:hasLC0_desc "Water" ;
+    slo:hasLC1_Desc "Inland salty water bodies" .
+
+slo:LC_G21 a slo:LandCover ;
+    slo:hasLC0_desc "Water" ;
+    slo:hasLC1_Desc "Inland fresh running water" .
+
+slo:LC_H11 a slo:LandCover ;
+    slo:hasLC0_desc "Wetlands" ;
+    slo:hasLC1_Desc "Inland marshes" .
+
+slo:LC_H12 a slo:LandCover ;
+    slo:hasLC0_desc "Wetlands" ;
+    slo:hasLC1_Desc "Peatbogs" .
+
+slo:LC_H22 a slo:LandCover ;
+    slo:hasLC0_desc "Wetlands" ;
+    slo:hasLC1_Desc "Salines" .
+
+slo:LU_U111 a slo:LandUse ;
+    slo:hasLU1_Desc "Agriculture (excluding fallow land and kitchen gardens)" .
+
+slo:LU_U112 a slo:LandUse ;
+    slo:hasLU1_Desc "Fallow land" .
+
+slo:LU_U113 a slo:LandUse ;
+    slo:hasLU1_Desc "Kitchen gardens" .
+
+slo:LU_U120 a slo:LandUse ;
+    slo:hasLU1_Desc "Forestry" .
+
+slo:LU_U140 a slo:LandUse ;
+    slo:hasLU1_Desc "Mining and quarrying" .
+
+slo:LU_U150 a slo:LandUse ;
+    slo:hasLU1_Desc "Other primary production" .
+
+slo:LU_U210 a slo:LandUse ;
+    slo:hasLU1_Desc "Energy production" .
+
+slo:LU_U311 a slo:LandUse ;
+    slo:hasLU1_Desc "Railway transport" .
+
+slo:LU_U312 a slo:LandUse ;
+    slo:hasLU1_Desc "Road transport" .
+
+slo:LU_U313 a slo:LandUse ;
+    slo:hasLU1_Desc "Water transport" .
+
+slo:LU_U317 a slo:LandUse ;
+    slo:hasLU1_Desc "Logistics and storage" .
+
+slo:LU_U318 a slo:LandUse ;
+    slo:hasLU1_Desc "Protection infrastructures" .
+
+slo:LU_U319 a slo:LandUse ;
+    slo:hasLU1_Desc "Electricity, gas and thermal power distribution" .
+
+slo:LU_U321 a slo:LandUse ;
+    slo:hasLU1_Desc "Water supply and treatment" .
+
+slo:LU_U330 a slo:LandUse ;
+    slo:hasLU1_Desc "Construction" .
+
+slo:LU_U341 a slo:LandUse ;
+    slo:hasLU1_Desc "Commerce" .
+
+slo:LU_U342 a slo:LandUse ;
+    slo:hasLU1_Desc "Financial, professional and information services" .
+
+slo:LU_U350 a slo:LandUse ;
+    slo:hasLU1_Desc "Community services" .
+
+slo:LU_U361 a slo:LandUse ;
+    slo:hasLU1_Desc "Amenities, museum, leisure (e.g. parks, botanical gardens)" .
+
+slo:LU_U362 a slo:LandUse ;
+    slo:hasLU1_Desc "Sport" .
+
+slo:LU_U370 a slo:LandUse ;
+    slo:hasLU1_Desc "Residential" .
+
+slo:LU_U411 a slo:LandUse ;
+    slo:hasLU1_Desc "Abandoned industrial areas" .
+
+slo:LU_U413 a slo:LandUse ;
+    slo:hasLU1_Desc "Abandoned transport areas" .
+
+slo:LU_U414 a slo:LandUse ;
+    slo:hasLU1_Desc "Abandoned residential areas" .
+
+slo:LU_U415 a slo:LandUse ;
+    slo:hasLU1_Desc "Other abandoned areas" .
+
+slo:LU_U420 a slo:LandUse ;
+    slo:hasLU1_Desc "Semi-natural and natural areas not in use" .
+

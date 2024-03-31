@@ -1,0 +1,113 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix slo: <https://w3id.org/soilkg/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema1: <http://schema.org/> .
+@prefix ramon: <http://rdfdata.eionet.europa.eu/ramon/ontology/> .
+
+# Check URIs
+slo:SurveyPointURIShape a sh:NodeShape ;
+        sh:targetClass slo:SurveyPoint ;
+        sh:pattern "^https://w3id.org/soilkg/SoilSurvey/[\\w]+$" ;
+        sh:message "SurveyPoint URI does not follow the required pattern." .
+
+slo:CropMeasurementURIShape a sh:NodeShape ;
+        sh:targetClass slo:CropMeasurement ;
+        sh:pattern "^https://w3id.org/soilkg/CropMeasurement/[^/]+/[^/]+/[^/]+$" ;
+        sh:message "CropMeasurement URI does not follow the required pattern." .
+
+slo:SoilPropertyURIShape a sh:NodeShape ;
+        sh:targetClass slo:SoilProperty ;
+        sh:pattern "^https://w3id.org/soilkg/SoilProperty/[^/]+/\\d+$" ;
+        sh:message "SoilProperty URI does not follow the required pattern." .
+
+#Check data types
+slo:SurveyPointShape a sh:NodeShape ;
+    sh:targetClass slo:SurveyPoint ;
+    sh:property [
+        sh:path slo:hasElevation ;
+        sh:datatype xsd:float ;
+        sh:name "Elevation" ;
+    ] ;
+    sh:property [
+        sh:path slo:hasLC ;
+        sh:class slo:LandCover ;
+        sh:name "Land Cover" ;
+    ] ;
+    sh:property [
+        sh:path slo:hasLU ;
+        sh:class slo:LandUse ;
+        sh:name "Land Use" ;
+    ] ;
+    sh:property [
+        sh:path slo:hasProperty ;
+        sh:class slo:SoilProperty ;
+        sh:name "Soil Property" ;
+    ] ;
+    sh:property [
+        sh:path slo:surveyDate ;
+        sh:datatype xsd:date ;
+        sh:name "Survey Date" ;
+    ] ;
+    sh:property [
+        sh:path slo:surveyLocation ;
+        sh:class ramon:NUTSRegion ;
+        sh:name "Survey Location" 
+    ] .
+
+slo:LandCoverShape a sh:NodeShape ;
+    sh:targetClass slo:LandCover ;
+    sh:property [
+        sh:path slo:hasLC0_desc ;
+        sh:datatype xsd:string ;
+        sh:name "Land Cover Description 0" ;
+    ] ;
+    sh:property [
+        sh:path slo:hasLC1_desc ;
+        sh:datatype xsd:string ;
+        sh:name "Land Cover Description 1" ;
+    ] .
+
+slo:LandUseShape a sh:NodeShape ;
+    sh:targetClass slo:LandUse ;
+    sh:property [
+        sh:path slo:hasLU1_desc ;
+        sh:datatype xsd:string ;
+        sh:name "Land Use Description 1" ;
+    ] .
+
+slo:CropMeasurementShape a sh:NodeShape ;
+    sh:targetClass slo:CropMeasurement ;
+    sh:property [
+        sh:path schema1:value ;
+        sh:datatype xsd:float ;
+        sh:name "Value" ;
+    ] ;
+    sh:property [
+        sh:path slo:CropMeasurementDate ;
+        sh:datatype xsd:date ;
+        sh:name "Measurement Date" ;
+    ] ;
+    sh:property [
+        sh:path slo:CropMeasurementLocation ;
+        sh:class ramon:NUTS2 ;
+        sh:name "Measurement Location" ;
+
+    ] ;
+    sh:property [
+        sh:path slo:cropMeasured ;
+        sh:class slo:Crop ;
+        sh:name "Crop Measured" ;
+    ] ;
+    sh:property [
+        sh:path slo:hasVariable ;
+        sh:class slo:cropVariable ;
+        sh:name "Variable" ;
+    ] .
+
+slo:SoilPropertyShape a sh:NodeShape ;
+    sh:targetClass slo:soilProperty ;
+    sh:property [
+        sh:path slo:unit ;
+        sh:datatype xsd:string ;
+        sh:name "Unit" ;
+    ] .

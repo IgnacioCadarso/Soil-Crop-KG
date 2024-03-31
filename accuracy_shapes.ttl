@@ -1,0 +1,142 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix slo: <https://w3id.org/soilkg/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema1: <http://schema.org/> .
+@prefix ramon: <http://rdfdata.eionet.europa.eu/ramon/ontology/> .
+
+
+slo:SurveyPointShape a sh:NodeShape ;
+    sh:targetClass slo:SurveyPoint ;
+    sh:property [
+        sh:path slo:hasElevation ;
+        sh:datatype xsd:float ;
+        sh:name "Elevation" ;
+        sh:minInclusive -293 ;
+        sh:maxInclusive 4809 ;
+    ] .
+
+slo:ECShape a sh:NodeShape ;
+    sh:targetClass slo:EC ;
+    sh:property [
+        sh:path slo:value ;
+        sh:datatype xsd:float ;
+        sh:minInclusive 1 ; # ISO 11265:1994
+        sh:maxInclusive 100000 ; 
+        sh:name "Electrical conductivity" ;
+    ] .
+
+slo:PHH2OShape a sh:NodeShape ;
+    sh:targetClass slo:PHH2O ;
+    sh:property [
+        sh:path slo:value ;
+        sh:datatype xsd:float ;
+        sh:minInclusive 2.0 ; # ISO 10390:2005
+        sh:maxInclusive 12.0 ;
+        sh:name "pH in H2O" ;
+    ] .
+
+slo:PHCaCl2Shape a sh:NodeShape ;
+    sh:targetClass slo:PHCaCl2 ;
+    sh:property [
+        sh:path slo:value ;
+        sh:datatype xsd:float ;
+        sh:minInclusive 2.0 ; # ISO 10390:2005
+        sh:maxInclusive 12.0 ;
+        sh:name "pH in CaCl2 solution" ;
+    ] .
+
+slo:OCShape a sh:NodeShape ;
+    sh:targetClass slo:OC ;
+    sh:property [
+        sh:path slo:value ;
+        sh:datatype xsd:float ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 1000 ;
+        sh:name "Organic carbon content" ;
+    ] .
+
+slo:OCC20_30Shape a sh:NodeShape ;
+    sh:targetClass slo:OCC20_30 ;
+    sh:property [
+        sh:path slo:value ;
+        sh:datatype xsd:float ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 1000 ;
+        sh:name "Organic carbon content (20-30 cm)" ;
+    ] .
+
+slo:NShape a sh:NodeShape ;
+    sh:targetClass slo:N ;
+    sh:property [
+        sh:path slo:value ;
+        sh:datatype xsd:float ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 1000 ;
+        sh:name "Total nitrogen content" ;
+    ] .
+
+slo:PShape a sh:NodeShape ;
+    sh:targetClass slo:P ;
+    sh:property [
+        sh:path slo:value ;
+        sh:datatype xsd:float ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 100000 ;
+        sh:name "Phosphorus content" ;
+    ] .
+
+slo:KShape a sh:NodeShape ;
+    sh:targetClass slo:K ;
+    sh:property [
+        sh:path slo:value ;
+        sh:datatype xsd:float ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 100000 ;
+        sh:name "Extractable potassium content" ;
+    ] .
+
+slo:CaCO3Shape a sh:NodeShape ;
+    sh:targetClass slo:CaCO3 ;
+    sh:property [
+        sh:path slo:value ;
+        sh:datatype xsd:float ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 100000 ;
+        sh:name "Carbonates content" ;
+    ] .
+
+slo:CaCO3C20_30Shape a sh:NodeShape ;
+    sh:targetClass slo:CaCO3C20_30 ;
+    sh:property [
+        sh:path slo:value ;
+        sh:datatype xsd:float ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 100000 ;
+        sh:name "Carbonates content (20-30 cm)" ;
+    ] .
+
+slo:Ox_AlShape a sh:NodeShape ;
+    sh:targetClass slo:Ox_Al ;
+    sh:property [
+        sh:path slo:value ;
+        sh:datatype xsd:float ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 100000 ;
+        sh:name "Al Oxylate content" ;
+    ] .
+
+slo:Ox_FeShape a sh:NodeShape ;
+    sh:targetClass slo:Ox_Fe ;
+    sh:property [
+        sh:path slo:value ;
+        sh:datatype xsd:float ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 100000 ;
+        sh:name "Fe Oxylate content" ;
+    ] .
+
+
+
+
+    
+
